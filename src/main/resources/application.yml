@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: credit-server
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#  servlet:
+#    multipart:
+#      max-file-size: 100Mb
+#      max-request-size: 100Mb
+server:
+  port: 8090
+  tomcat:
+    max-connections: 1000
+    max-threads: 100
+
