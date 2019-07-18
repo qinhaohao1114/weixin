@@ -21,9 +21,6 @@ public class HandlerScanner implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<? extends Object> clazz = bean.getClass();
-        Class<?>[] interfaces = clazz.getInterfaces();
-//        if(interfaces != null && interfaces.length>0){
-//            for (Class<?> interFace :interfaces){
                 //获取类注解
                 BusinessHandle businessHandle = clazz.getAnnotation(BusinessHandle.class);
                 if (businessHandle == null){
@@ -44,7 +41,7 @@ public class HandlerScanner implements BeanPostProcessor {
                                 if (InvokerHoler.getInvoker(type,content)==null){
                                     InvokerHoler.addInvoker(type,content, Invoker.valueOf(method,bean));
                                 }else {
-                                    log.error("重复命令:"+"type:"+type+" "+"cmd: "+content);
+                                    log.error("重复命令:"+"type:"+type+" "+"content: "+content);
                                 }
                                 if (type.equals("text")){
                                     TextMessageUtil.keyBuffer.append(content+",");
@@ -57,8 +54,6 @@ public class HandlerScanner implements BeanPostProcessor {
                     if (TextMessageUtil.keyBuffer.length()>0){
                         TextMessageUtil.keyBuffer = TextMessageUtil.keyBuffer.deleteCharAt(TextMessageUtil.keyBuffer.length() - 1);
                     }
-//            }
-//        }
         return bean;
     }
 }
