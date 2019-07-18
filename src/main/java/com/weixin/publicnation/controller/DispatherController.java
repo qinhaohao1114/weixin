@@ -25,14 +25,12 @@ import java.util.Map;
 @Controller
 @RequestMapping("wx")
 @Slf4j
-public class LoginController {
+public class DispatherController {
 
 
     @Value("${weixin.token}")
     private String token;
 
-    @Autowired
-    private ImageMessageService imageMessageService;
 
     @GetMapping
     public void login(HttpServletRequest request, HttpServletResponse response){
