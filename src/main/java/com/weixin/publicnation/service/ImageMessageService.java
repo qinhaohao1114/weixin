@@ -33,8 +33,8 @@ public class ImageMessageService implements BaseMessageUtil<ImageMessageVo> {
 	 * 封装信息
 	 */
 	@Override
-	public String initMessage(String FromUserName, String ToUserName) {
-		FileInfo fileInfo = fileInfoService.getById(1L);
+	public String initMessage(String FromUserName, String ToUserName,Long id) {
+		FileInfo fileInfo = fileInfoService.getById(id);
 		ImageVo image = new ImageVo();
 		image.setMediaId(fileInfo.getMediaId());
 		ImageMessageVo message = new ImageMessageVo();

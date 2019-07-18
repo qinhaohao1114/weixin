@@ -1,11 +1,17 @@
 package com.weixin.publicnation.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.weixin.publicnation.config.Invoker;
+import com.weixin.publicnation.config.InvokerHoler;
+import com.weixin.publicnation.constant.Constant;
+import com.weixin.publicnation.constant.EventType;
+import com.weixin.publicnation.constant.MsgType;
 import com.weixin.publicnation.service.ImageMessageService;
 import com.weixin.publicnation.utils.CheckUtil;
 import com.weixin.publicnation.utils.MessageUtil;
 import com.weixin.publicnation.utils.TextMessageUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -47,7 +53,6 @@ public class LoginController {
                 out.flush();
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }finally{
             out.close();
@@ -61,21 +66,35 @@ public class LoginController {
         PrintWriter out = null;
         //将微信请求xml转为map格式，获取所需的参数
         Map<String,String> map = MessageUtil.xmlToMap(request);
-        String ToUserName = map.get("ToUserName");
-        String FromUserName = map.get("FromUserName");
-        String MsgType = map.get("MsgType");
-        String Content = map.get("Content");
+        String toUserName = map.get("ToUserName");
+        String fromUserName = map.get("FromUserName");
+        String msgType = map.get("MsgType");
+        String event = map.get("Event");
+        String eventKey = map.get("EventKey");
+        String content = map.get("Content");
         String message = null;
-        log.info("FromUserName:{},ToUserName:{},MsgType:{},Content:{}",FromUserName,ToUserName,MsgType,Content);
-        //处理文本类型，实现输入1，回复相应的封装的内容
-        if("text".equals(MsgType)){
-            if("1".equals(Content)){
-                message = TextMessageUtil.initMessage(FromUserName, ToUserName);
-            }else if("图片".equals(Content)){
-                message=imageMessageService.initMessage(FromUserName,ToUserName);
-            }else {
-                message = TextMessageUtil.initMessage(FromUserName, ToUserName,Content);
+        log.info("FromUserName:{},ToUserName:{},MsgType:{},Content:{}",fromUserName,toUserName,msgType,content);
+        String contentParams=null;
+        if (msgType.equals(MsgType.EVENT)){
+            if (event.equals(EventType.CLICK)){
+                contentParams=eventKey;
+            }else if (!event.equals(EventType.SCAN)){
+                contentParams=event;
             }
+        }else if (msgType.equals(MsgType.TEXT)){
+             contentParams=content;
+        }else {
+            contentParams=msgType;
+        }
+        try {
+            Invoker invoker = InvokerHoler.getInvoker(msgType, contentParams);
+            if (invoker!=null){
+                message = (String) invoker.invoke(map,fromUserName,toUserName);
+            }else {
+                message = TextMessageUtil.initMessage(fromUserName,toUserName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         try {
             out = response.getWriter();

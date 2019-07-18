@@ -6,6 +6,8 @@ import com.weixin.publicnation.bean.vo.MessageTextVo;
 import java.util.Date;
 
 public class TextMessageUtil{
+
+	public static StringBuffer keyBuffer=new StringBuffer();
 	/**
 	 * 将发送消息封装成对应的xml格式
 	 */
@@ -23,7 +25,8 @@ public class TextMessageUtil{
 		MessageTextVo text = new MessageTextVo();
 		text.setToUserName(FromUserName);
 		text.setFromUserName(ToUserName);
-		text.setContent("欢迎进入当前微信号测试");
+		String key = keyBuffer.toString();
+		text.setContent("欢迎进入当前微信号测试，幸福快乐每一天,请输入关键词进行查看："+key);
 		text.setCreateTime(System.currentTimeMillis());
 		text.setMsgType("text");
 		return messageToxml(text);

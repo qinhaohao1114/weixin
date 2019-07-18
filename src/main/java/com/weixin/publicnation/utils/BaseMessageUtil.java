@@ -20,5 +20,5 @@ public interface BaseMessageUtil <T>{
 	 * @param ToUserName
 	 * @return
 	 */
-	public abstract  String initMessage(String FromUserName,String ToUserName);
+	public abstract  String initMessage(String FromUserName,String ToUserName,Long id);
 }
