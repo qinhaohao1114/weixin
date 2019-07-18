@@ -1,9 +1,9 @@
 package com.weixin.publicnation.bean.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.starsgroupchina.common.base.BaseModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 @ApiModel

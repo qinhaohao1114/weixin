@@ -1,6 +1,7 @@
 package com.weixin.publicnation.bean.entity;
 
 import com.starsgroupchina.common.base.BaseExample;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;

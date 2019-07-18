@@ -1,9 +1,7 @@
 package com.weixin.publicnation.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.weixin.publicnation.config.Invoker;
 import com.weixin.publicnation.config.InvokerHoler;
-import com.weixin.publicnation.constant.Constant;
 import com.weixin.publicnation.constant.EventType;
 import com.weixin.publicnation.constant.MsgType;
 import com.weixin.publicnation.service.ImageMessageService;
@@ -11,7 +9,6 @@ import com.weixin.publicnation.utils.CheckUtil;
 import com.weixin.publicnation.utils.MessageUtil;
 import com.weixin.publicnation.utils.TextMessageUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

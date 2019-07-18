@@ -6,7 +6,6 @@ import com.weixin.publicnation.bean.vo.ClickButtonVo;
 import com.weixin.publicnation.bean.vo.MenuVo;
 import com.weixin.publicnation.bean.vo.ViewButtonVo;
 import com.weixin.publicnation.utils.RestTemplateUtils;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

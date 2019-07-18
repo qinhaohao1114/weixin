@@ -2,7 +2,6 @@ package com.weixin.publicnation.business;
 
 import com.weixin.publicnation.annotation.BusinessContent;
 import com.weixin.publicnation.annotation.BusinessHandle;
-import com.weixin.publicnation.constant.Constant;
 import com.weixin.publicnation.constant.MsgType;
 import com.weixin.publicnation.utils.TextMessageUtil;
 import org.springframework.stereotype.Component;

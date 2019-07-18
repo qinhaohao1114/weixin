@@ -3,8 +3,6 @@ package com.weixin.publicnation.utils;
 import com.thoughtworks.xstream.XStream;
 import com.weixin.publicnation.bean.vo.MessageTextVo;
 
-import java.util.Date;
-
 public class TextMessageUtil{
 
 	public static StringBuffer keyBuffer=new StringBuffer();
