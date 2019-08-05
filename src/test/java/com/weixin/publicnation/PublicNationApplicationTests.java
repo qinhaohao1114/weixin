@@ -2,6 +2,7 @@ package com.weixin.publicnation;
 
 import com.weixin.publicnation.service.MenuService;
 import com.weixin.publicnation.service.TokenService;
+import com.weixin.publicnation.thirddata.PddDataService;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,6 +20,9 @@ public class PublicNationApplicationTests {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private PddDataService pddDataService;
 
     @Test
     public void contextLoads() {
@@ -45,5 +49,10 @@ public class PublicNationApplicationTests {
         Assert.assertTrue(result==200);
 
     }
+    @Test
+    public void getData(){
 
+        pddDataService.HotGoods();
+
+    }
 }

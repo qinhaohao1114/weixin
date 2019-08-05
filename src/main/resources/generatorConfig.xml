@@ -34,7 +34,20 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <table tableName="file_info" domainObjectName="FileInfo"
+        <!--<table tableName="file_info" domainObjectName="FileInfo"-->
+               <!--enableInsert="true"-->
+               <!--enableSelectByPrimaryKey="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--enableUpdateByPrimaryKey="true"-->
+               <!--enableDeleteByPrimaryKey="true"-->
+               <!--enableDeleteByExample="true"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--selectByPrimaryKeyQueryId="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="good" domainObjectName="Good"
                enableInsert="true"
                enableSelectByPrimaryKey="true"
                enableSelectByExample="true"
