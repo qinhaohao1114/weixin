@@ -63,21 +63,29 @@
                <!--selectByExampleQueryId="true">-->
             <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="good" domainObjectName="Good"
-               enableSelectByExample="false"
-               enableDeleteByExample="false"
-               enableCountByExample="false"
-               enableUpdateByExample="false">
-            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
-        </table>
+        <!--<table tableName="good" domainObjectName="Good"-->
+               <!--enableSelectByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableCountByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+            <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
 
-        <table tableName="good_recommend" domainObjectName="GoodRecommend"
-               enableSelectByExample="false"
-               enableDeleteByExample="false"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-              >
-            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        <!--<table tableName="good_recommend" domainObjectName="GoodRecommend"-->
+               <!--enableSelectByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableCountByExample="false"-->
+               <!--enableUpdateByExample="false"-->
+              <!--&gt;-->
+            <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="user" domainObjectName="User"
+        enableSelectByExample="false"
+        enableDeleteByExample="false"
+        enableCountByExample="false"
+        enableUpdateByExample="false"
+        >
+        <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
     </context>
 

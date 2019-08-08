@@ -1,5 +1,6 @@
 package com.weixin.publicnation;
 
+import com.weixin.publicnation.bean.entity.Good;
 import com.weixin.publicnation.service.MenuService;
 import com.weixin.publicnation.service.TokenService;
 import com.weixin.publicnation.thirddata.PddDataService;
@@ -51,7 +52,6 @@ public class PublicNationApplicationTests {
     }
     @Test
     public void getData(){
-
         pddDataService.recomendGood();
 
     }
