@@ -37,7 +37,7 @@ public class FileComposeService {
         fileInfo.setFileName(multipartFile.getOriginalFilename());
         fileInfo.setFileSize(multipartFile.getSize());
         fileInfo.setMediaId(mediaId);
-//        fileInfoService.save(fileInfo);
+        fileInfoService.save(fileInfo);
         return mediaId;
     }
 }

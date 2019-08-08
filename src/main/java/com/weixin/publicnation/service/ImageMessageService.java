@@ -28,8 +28,7 @@ public class ImageMessageService implements BaseMessageUtil<ImageMessageVo> {
 	 */
 	@Override
 	public String initMessage(String FromUserName, String ToUserName,Long id) {
-//		FileInfo fileInfo = fileInfoService.getById(id);
-		FileInfo fileInfo = new FileInfo();
+		FileInfo fileInfo = fileInfoService.getById(id);
 		ImageVo image = new ImageVo();
 		image.setMediaId(fileInfo.getMediaId());
 		ImageMessageVo message = new ImageMessageVo();
