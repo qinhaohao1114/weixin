@@ -6,7 +6,10 @@ import com.weixin.publicnation.bean.entity.User;
 import com.weixin.publicnation.dao.UserMapper;
 import com.weixin.publicnation.service.UserService;
 import com.weixin.publicnation.transfer.UserDtoTransfer;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {

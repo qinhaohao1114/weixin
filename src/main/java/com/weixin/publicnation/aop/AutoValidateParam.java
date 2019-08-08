@@ -1,5 +1,6 @@
 package com.weixin.publicnation.aop;
 
+import com.alibaba.fastjson.JSONObject;
 import com.weixin.publicnation.response.SimpleResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +15,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 自动验证controller层的参数
@@ -30,7 +35,7 @@ public class AutoValidateParam {
     /**
      * 定义切入点
      */
-    @Pointcut("execution(public * com.weixin.publicnation.service.impl..*.*(..))")
+    @Pointcut("execution(public * com.weixin.publicnation.controller..*.*(..))")
     public void cutService() {
     }
 
@@ -46,7 +51,7 @@ public class AutoValidateParam {
         // 验证结果
         // 获取所有的请求参数
         Object[] args = joinPoint.getArgs();
-        ValidateResult validateResult = ValidateResult.builder().passed(true).message("校验通过").build();
+        ValidateResult validateResult = ValidateResult.builder().passed(true).build();
         if (null != args && args.length > 0) {
             for (Object obj : args) {
                 if (obj instanceof BindingResult) {
@@ -65,15 +70,20 @@ public class AutoValidateParam {
                 log.error("AOP执行拦截方法时异常, {}", ex);
             }
         } else {
-            result = SimpleResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), validateResult.getMessage());
+            result = SimpleResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), JSONObject.toJSONString(validateResult.getMessage()));
         }
         return result;
     }
 
     private void validate(BindingResult obj, ValidateResult validateResult) {
         if (obj.hasErrors()){
+            List<ObjectError> allErrors = obj.getAllErrors();
+            List<String> errs = new ArrayList<>();
+            for (ObjectError objectError : allErrors) {
+                errs.add(objectError.getDefaultMessage());
+            }
             validateResult.setPassed(false);
-            validateResult.setMessage(obj.getFieldError().getDefaultMessage());
+            validateResult.setMessage(errs);
         };
     }
 
@@ -83,7 +93,7 @@ public class AutoValidateParam {
     @Builder
     static class ValidateResult{
         private boolean passed;
-        private String message;
+        private List<String> message;
     }
 
 }
