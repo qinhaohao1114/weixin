@@ -1,6 +1,6 @@
 package com.weixin.publicnation.bean.entity;
 
-import com.starsgroupchina.common.base.BaseModel;
+import com.weixin.publicnation.base.BaseModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

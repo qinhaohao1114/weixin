@@ -1,6 +1,6 @@
 package com.weixin.publicnation.controller;
 
-import com.starsgroupchina.common.response.SimpleResponse;
+import com.weixin.publicnation.response.SimpleResponse;
 import com.weixin.publicnation.service.MenuService;
 import com.weixin.publicnation.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;

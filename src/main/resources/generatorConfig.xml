@@ -29,11 +29,27 @@
             <property name="rootClass" value="com.starsgroupchina.common.base.BaseModel"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.weixin.publicnation.dao"
-                         targetProject="src/main/resources">
-            <property name="enableSubPackages" value="false"/>
-        </sqlMapGenerator>
 
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+            <!--<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+            <!--<property name="caseSensitive" value="true"/>-->
+            <!--<property name="forceAnnotation" value="true"/>-->
+            <!--<property name="beginningDelimiter" value="`"/>-->
+            <!--<property name="endingDelimiter" value="`"/>-->
+        <!--</plugin>-->
+
+        <!--<sqlMapGenerator targetPackage="com.weixin.publicnation.dao"-->
+                         <!--targetProject="src/main/resources">-->
+            <!--<property name="enableSubPackages" value="false"/>-->
+        <!--</sqlMapGenerator>-->
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <!--<javaClientGenerator type="XMLMAPPER"-->
+                             <!--targetPackage="com.weixin.publicnation.dao"-->
+                             <!--targetProject="src/main/java">-->
+            <!--&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;-->
+            <!--<property name="enableSubPackages" value="false" />-->
+        <!--</javaClientGenerator>-->
         <!--<table tableName="file_info" domainObjectName="FileInfo"-->
                <!--enableInsert="true"-->
                <!--enableSelectByPrimaryKey="true"-->
@@ -48,16 +64,19 @@
             <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
         <!--</table>-->
         <table tableName="good" domainObjectName="Good"
-               enableInsert="true"
-               enableSelectByPrimaryKey="true"
-               enableSelectByExample="true"
-               enableUpdateByPrimaryKey="true"
-               enableDeleteByPrimaryKey="true"
-               enableDeleteByExample="true"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               selectByPrimaryKeyQueryId="true"
-               selectByExampleQueryId="true">
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+
+        <table tableName="good_recommend" domainObjectName="GoodRecommend"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+              >
             <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
     </context>

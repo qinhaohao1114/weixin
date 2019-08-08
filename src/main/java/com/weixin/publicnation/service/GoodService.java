@@ -1,10 +1,9 @@
 package com.weixin.publicnation.service;
 
-import com.starsgroupchina.common.base.AbstractService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.weixin.publicnation.bean.entity.Good;
-import com.weixin.publicnation.bean.entity.GoodExample;
-import org.springframework.stereotype.Service;
 
-@Service
-public class GoodService extends AbstractService<Good, GoodExample> {
+public interface GoodService extends IService<Good> {
+
+
 }

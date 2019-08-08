@@ -1,7 +1,7 @@
 package com.weixin.publicnation.controller;
 
-import com.starsgroupchina.common.response.SimpleResponse;
 import com.weixin.publicnation.compose.FileComposeService;
+import com.weixin.publicnation.response.SimpleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;

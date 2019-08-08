@@ -52,7 +52,7 @@ public class PublicNationApplicationTests {
     @Test
     public void getData(){
 
-        pddDataService.HotGoods();
+        pddDataService.recomendGood();
 
     }
 }
