@@ -2,6 +2,7 @@ package com.weixin.publicnation.thirddata;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Maps;
 import com.weixin.publicnation.bean.entity.Good;
 import com.weixin.publicnation.bean.entity.GoodRecommend;
 import com.weixin.publicnation.service.GoodRecommendService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -47,5 +49,15 @@ public class PddDataService {
         log.info(body);
         List<GoodRecommend> goods = JSONObject.parseArray(goodsList, GoodRecommend.class);
         goodRecommendService.saveBatch(goods);
+    }
+
+    public void test(){
+        String url="https://iwms.cloud.cmbchina.com/leasing/api/1.0/buildings?pageIndex=1";
+        HashMap<String, String> header = Maps.newHashMap();
+        header.put("1208mocecapsucofD","21");
+        ResponseEntity<String> stringResponseEntity = RestTemplateUtils.get(url, header, String.class);
+        String body = stringResponseEntity.getBody();
+        System.out.println(body);
+
     }
 }
