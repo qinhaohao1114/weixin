@@ -6,12 +6,14 @@
 <generatorConfiguration>
     <context id="wanda" targetRuntime="MyBatis3" defaultModelType="flat">
 
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.CommentPlugin"></plugin>
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.AddWherePlugin"></plugin>
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.PagerPlugin"></plugin>
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.SerializablePlugin"></plugin>
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.EqualsHashCodePlugin"></plugin>
-        <plugin type="com.starsgroupchina.common.plugin.mybatis.ExamplePlugin"></plugin>
+        <plugin type="com.service.common.mybatis.CommentPlugin">
+            <property name="hasLombok" value="true"/>
+        </plugin>
+        <!--<plugin type="com.weixin.publicnation.mybatis.AddWherePlugin"></plugin>-->
+        <!--<plugin type="com.weixin.publicnation.mybatis.PagerPlugin"></plugin>-->
+        <plugin type="com.service.common.mybatis.SerializablePlugin"></plugin>
+        <plugin type="com.service.common.mybatis.EqualsHashCodePlugin"></plugin>
+        <!--<plugin type="com.weixin.publicnation.mybatis.ExamplePlugin"></plugin>-->
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://47.100.55.164/weixin?serverTimezone=UTC"
@@ -26,8 +28,13 @@
         <javaModelGenerator targetPackage="com.weixin.publicnation.bean.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
-            <property name="rootClass" value="com.starsgroupchina.common.base.BaseModel"/>
+            <property name="rootClass" value="com.weixin.publicnation.base.BaseModel"/>
         </javaModelGenerator>
+
+        <!--<javaClientGenerator targetPackage="com.weixin.publicnation.dao"-->
+                             <!--targetProject="src/main/java"-->
+                             <!--type="XMLMAPPER">-->
+        <!--</javaClientGenerator>-->
 
 
         <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
@@ -79,13 +86,37 @@
               <!--&gt;-->
             <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="user" domainObjectName="User"
-        enableSelectByExample="false"
-        enableDeleteByExample="false"
-        enableCountByExample="false"
-        enableUpdateByExample="false"
+        <!--<table tableName="user" domainObjectName="User"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableCountByExample="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--&gt;-->
+        <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="sys_user" domainObjectName="SysUser"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
         >
-        <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="sys_role" domainObjectName="SysRole"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="sys_user_role" domainObjectName="SysUserRole"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
     </context>
 

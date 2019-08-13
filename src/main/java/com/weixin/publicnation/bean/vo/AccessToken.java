@@ -14,6 +14,5 @@ public class AccessToken {
 	 * 凭证有效时间
 	 */
 	private int expires_in;
-	
-	
-}	
+
+}
