@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
@@ -59,6 +60,7 @@ public class PublicNationApplicationTests {
     @Test
     public void getData(){
         pddDataService.test();
+        Semaphore semaphore=new Semaphore(3);
 
     }
 
