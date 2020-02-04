@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class PublicNationApplication {
 
     public static void main(String[] args) {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+
         ConfigurableApplicationContext context = SpringApplication.run(PublicNationApplication.class, args);
         SpringContextUtils.setApplicationContext(context);
     }

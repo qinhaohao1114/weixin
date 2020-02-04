@@ -115,4 +115,60 @@ public class Sort {
         }
     }
 
+
+    @Test
+    public void testQuick(){
+        int[] A={49,38,65,97,76,13,27};
+        quickSort(A);
+        for (int i : A) {
+            System.out.print(i+" ");
+        }
+    }
+
+    /**
+     * 快速排序
+     **/
+    public void quickSort(int a[]){
+        quickSortC(a,0,a.length-1);
+    }
+
+
+
+    private void quickSortC(int[] a, int low, int high) {
+        if (low>=high){
+            return;
+        }
+        int mid=partition(a,low,high);
+        quickSortC(a,low,mid-1);
+        quickSortC(a,mid+1,high);
+    }
+
+    private int partition(int[] a, int low, int high) {
+        int pivot=a[low];
+        int i=low;
+        int j=high;
+        while (i<j){
+            while (pivot<=a[j]&&i<j){
+                j--;
+            }
+            while (pivot>=a[i]&&i<j){
+                i++;
+            }
+            if (i<j){
+                swap(a,i,j);
+            }
+        }
+        a[low]=a[i];
+        a[i]=pivot;
+        return j;
+    }
+
+    private void swap(int[] a,int i,int j){
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+
+
+
 }

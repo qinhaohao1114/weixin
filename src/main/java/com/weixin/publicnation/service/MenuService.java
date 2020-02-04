@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -31,6 +32,7 @@ public class MenuService {
 	 * @param menu 菜单json格式字符串
 	 * @return
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	public int createMenu(String accessToken,String menu){
 		int result = Integer.MIN_VALUE;
 		String url = menuUrl.replaceAll("ACCESS_TOKEN", accessToken);
